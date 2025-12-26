@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Food App Mizu - สั่งเลยอร่อยทุกอย่าง</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f4f4; }
+        header { background-color: #00b7ff; color: white; padding: 1rem; text-align: center; position: sticky; top: 0; z-index: 100; }
+        
+        .container { display: flex; flex-wrap: wrap; padding: 20px; justify-content: center; }
+        
+        .food-card { background: white; border-radius: 15px; margin: 10px; width: 250px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: 0.3s; }
+        .food-card:hover { transform: translateY(-5px); }
+        .food-info { padding: 15px; text-align: center; }
+        .food-price { color: #00b7ff; font-weight: bold; font-size: 1.2rem; }
+        
+        button { background-color: #2ed573; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 1rem; margin-top: 10px; }
+        button:hover { background-color: #7bed9f; }
+
+        .cart-section { background: white; padding: 20px; margin: 20px auto; max-width: 600px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding: 10px 0; }
+        .total { font-size: 1.5rem; text-align: right; margin-top: 15px; font-weight: bold; color: #2f3542; }
+        .checkout-btn { background-color: #00b7ff; width: 100%; margin-top: 20px; }
+        
+        .delete-btn {
+            background-color: #ff4757;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            margin-top: 0;
+            margin-left: 10px;
+        }
+        .delete-btn:hover {
+            background-color: #ff6b81;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🍱 Mizu</h1>
+</header>
+
+<div class="container">
+    <div class="food-card">
+        <div class="food-info">
+            <h3>ข้าวอบกรอบ</h3>
+            <h3>🍘</h3>
+            <p class="food-price">฿69</p>
+            <button onclick="addToCart('ข้าวอบกรอบ', 69)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <div class="food-info">
+            <h3>ข้าวปั้น</h3>
+            <h3>🍙</h3>
+            <p class="food-price">฿69</p>
+            <button onclick="addToCart('ข้าวปั้น', 69)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <div class="food-info">
+            <h3>ข้าวสวย</h3>
+            <h3>🍚</h3>
+            <p class="food-price">฿30</p>
+            <button onclick="addToCart('ข้าวสวย', 30)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <div class="food-info">
+            <h3>ข้าวแกงกะหรี่</h3>
+            <h3>🍛</h3>
+            <p class="food-price">฿189</p>
+            <button onclick="addToCart('ข้าวแกงกะหรี่', 189)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <div class="food-info">
+            <h3>ราเมน</h3>
+            <h3>🍜</h3>
+            <p class="food-price">฿149</p>
+            <button onclick="addToCart('ราเมน', 149)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <div class="food-info">
+            <h3>สปาเก็ตตี้</h3>
+            <h3>🍝</h3>
+            <p class="food-price">฿169</p>
+            <button onclick="addToCart('สปาเก็ตตี้', 169)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <div class="food-info">
+            <h3>ดังโงะ</h3>
+            <h3>🍡</h3>
+            <p class="food-price">฿35</p>
+            <button onclick="addToCart('ดังโงะ', 35)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <div class="food-info">
+            <h3>โอเด้ง</h3>
+            <h3>🍢</h3>
+            <p class="food-price">฿35</p>
+            <button onclick="addToCart('โอเด้ง', 35)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <div class="food-info">
+            <h3>ซูชิ</h3>
+            <h3>🍣</h3>
+            <p class="food-price">฿20</p>
+            <button onclick="addToCart('ซูชิ', 20)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <div class="food-info">
+            <h3>กุ้งเทมปุระ (3 ชิ้น)</h3>
+            <h3>🍤</h3>
+            <p class="food-price">฿129</p>
+            <button onclick="addToCart('กุ้งเทมปุระ 3 ชิ้น', 129)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <div class="food-info">
+            <h3>ลูกชิ้นปลา</h3>
+            <h3>🍥</h3>
+            <p class="food-price">฿10</p>
+            <button onclick="addToCart('ลูกชิ้นปลา', 10)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <div class="food-info">
+            <h3>เกี๊ยวซ่า (5 ชิ้น)</h3>
+            <h3>🥟</h3>
+            <p class="food-price">฿89</p>
+            <button onclick="addToCart('เกี๊ยวซ่า 5 ชิ้น', 89)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <div class="food-info">
+            <h3>เซตกลับบ้าน</h3>
+            <h3>🥡</h3>
+            <p class="food-price">฿899</p>
+            <button onclick="addToCart('เซตกลับบ้าน', 899)">เพิ่มในตะกร้า</button>
+        </div>
+    </div>
+</div>
+
+<div class="cart-section">
+    <h2>ตะกร้าสินค้าของคุณ 🛒</h2>
+    <div id="cart-items">
+        <p style="color: #666;">ยังไม่มีสินค้าในตะกร้า</p>
+    </div>
+    <div class="total">รวมทั้งหมด: ฿<span id="total-price">0</span></div>
+    <button class="checkout-btn" onclick="checkout()">ยืนยันการสั่งซื้อ</button>
+</div>
+
+<script>
+    let cart = [];
+    let total = 0;
+
+    function addToCart(name, price) {
+        cart.push({name, price});
+        total += price;
+        renderCart();
+    }
+
+    function removeFromCart(index) {
+        total -= cart[index].price;
+        cart.splice(index, 1);
+        renderCart();
+    }
+
+    function renderCart() {
+        const cartContainer = document.getElementById('cart-items');
+        const totalContainer = document.getElementById('total-price');
+        
+        if (cart.length === 0) {
+            cartContainer.innerHTML = '<p style="color: #666;">ยังไม่มีสินค้าในตะกร้า</p>';
+        } else {
+            cartContainer.innerHTML = '';
+            cart.forEach((item, index) => {
+                cartContainer.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.name} - ฿${item.price}</span>
+                        <button class="delete-btn" onclick="removeFromCart(${index})">ลบ</button>
+                    </div>
+                `;
+            });
+        }
+        totalContainer.innerText = total;
+    }
+
+    function checkout() {
+        if (cart.length === 0) {
+            alert("กรุณาเลือกอาหารก่อนสั่งซื้อครับ!");
+        } else {
+            alert("สั่งซื้อเรียบร้อยแล้ว! ยอดรวมคือ ฿" + total + "\nขอบคุณที่ใช้บริการครับ");
+            cart = [];
+            total = 0;
+            renderCart();
+        }
+    }
+</script>
+
+</body>
+</html>
